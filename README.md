@@ -1,5 +1,4 @@
-# 🚀 Wells Fargo Global Industry Challenge – Phase 3  
-**Team: Feynman Prodigies**
+
 
 # 🌐 Global Industry Challenge — Wells Fargo Challenge – Phase 3
 
