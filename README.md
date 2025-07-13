@@ -1,182 +1,191 @@
 # 🚀 Wells Fargo Global Industry Challenge – Phase 3  
 **Team: Feynman Prodigies**
 
-## 🧠 1. Final Circuit Execution and Output Validation
+# 🌐 Global Industry Challenge — Wells Fargo Challenge – Phase 3
 
-### ✅ Mid-Circuit Measurement Logic: Mathematical Modeling
-
-We begin by analyzing the **conditional evolution** of an ideal mid-circuit measurement circuit. The goal is to demonstrate the **mathematical equivalence** between mid-circuit measurements and our **deferred measurement** implementation.
-
----
-
-### 📐 Initial State Preparation
-
-- Two data qubits:  
-  \[
-  |x_0⟩ = α|0⟩ + β|1⟩,\quad |\alpha|^2 + |\beta|^2 = 1
-  \]
-- Ancilla initialized as \(|0⟩\)
-- Joint input:  
-  \[
-  |Ψ_{in}⟩ = |x_0⟩_1 \otimes |x_0⟩_2 \otimes |0⟩_3
-  \]
-- Unitary used:  
-  \[
-  U = \text{CNOT}_{1→3} \cdot \text{CNOT}_{1→2} \cdot (H_1 \otimes I_2 \otimes I_3)
-  \]
-
-### 🔁 Conditional Evolution Through Rounds
-
-- The recursive relationship is:
-  \[
-  (q_n, r_n) = 
-  \begin{cases}
-  (0, r_{n-1}) & \text{if } y_n = 0 \\
-  (1, \tilde{r}_{n-1}) & \text{if } y_n = 1
-  \end{cases}
-  \]
+**Team Name**: Feynman Prodigies  
+**Challenge Focus**: Robust Quantum Feedback Circuit Design with Deferred Measurement  
+**Backend**: IonQ Simulator with Aria-1 Noise Model
 
 ---
 
-## 🧪 2. Deferred Measurement: Implementation and Equivalence
+## 🧮 1. Final Circuit Execution and Output Validation
 
-### 🔁 Protocol Overview
+We begin with a mathematical analysis of an ideal **mid-circuit measurement circuit** and prove its equivalence with our **deferred measurement** approach.
 
-Using ancilla registers \( E_1, \dots, E_n \), we replicate the measurement logic without explicit mid-circuit resets:
+### 📐 Mathematical Modeling of Conditional Evolution
+
+Let both data qubits be initialized to:
 
 \[
-U_{123} |q_{k-1}, r_{k-1}, 0⟩ \rightarrow |q'_k, r'_k, q_k⟩
+|x_0\rangle = \alpha |0\rangle + \beta |1\rangle, \quad |\alpha|^2 + |\beta|^2 = 1
 \]
 
-### 🧾 Deferred Measurement Sequence
-
-1. Apply unitary `U`
-2. Store the result in ancilla via:
-   - `CNOT_3→Ek`
-   - `CNOT_Ek→3`
-
-Final ancilla states hold coherent record of classical outcomes. Measuring ancillas retrieves identical results to the original mid-circuit protocol.
-
-### ✅ **Proof of Equivalence**:  
-Both mid-circuit and deferred approaches produce the same output state on qubits 1 and 2.
-
----
-
-### 📊 Fidelity Validation
-
-![Fidelity Plot](./images/fidelity_plot.png)
-
-- **Figure 1a**: Circuit for input \( y_1y_2y_3 = 001 \)  
-- **Figure 1b**: Fidelity across all 3-bit combinations for \( n = 3 \) on Aer simulator  
-- **Result**: Fidelity remains **1.0**, matching theoretical predictions.
-
----
-
-## ⚙️ 3. Performance & Scalability Benchmarks
-
-Benchmarked on the **IonQ simulator** (Aria-1 noise model):
-
-### 📈 Complexity Metrics
-
-- **Circuit Depth** (Figure 2a): Linear scaling with \( n \)
-- **Gate Count** (Figure 2b): Increases linearly due to ancilla control logic
-
-### 🧠 Resource Usage
-
-- **Memory Load** (Figure 3a): Increases with ancilla count
-- **Qubit Reuse** (Figure 3b): Efficient despite lack of mid-circuit resets
-
-![Circuit Stats](./images/circuit_scaling.png)
-
----
-
-## 🌍 4. Connection to Real-World Feedback Systems
-
-- Supports **fault-tolerant feedback** using redundant ancilla registers.
-- Enables **majority voting** across ancillas to mitigate single-qubit noise.
-- Bridges to:
-  - **Quantum Error Correction**
-  - **Quantum Sensing**
-  - **Variational Algorithms (VQAs)**
-  - **Hybrid QML Feedback Loops**
-
----
-
-## 🛡️ 5. Error Analysis and Mitigation
-
-### 🔬 Noise Model: Aria-1 Simulator
-
-- Depolarizing channel with:
-  - \( r_y: p = 0.0005 \)
-  - \( r_{xx}: p = 0.0133 \)
-
-### 🧪 Results
-
-- Gradual fidelity decline with increasing \( n \)
-- Conditional logic is preserved via:
-  - Explicit ancilla encoding
-  - Classical post-processing
-  - Strong CNOT control logic
-
----
-
-## ✂️ Circuit Cutting (Planned Extension)
-
-> A placeholder for incorporating **circuit-cutting strategies**:
-- Divide large circuits into smaller subcircuits
-- Enable parallelism and reduced simulation cost
-- Maintain measurement-conditioned logic integrity
-
----
-
-## 🔮 6. Reflections and Future Extensions
-
-### 🔧 Generalization
-
-- Scale to deeper feedback logic and more ancillas
-- Add redundancy and error detection via majority voting
-
-### 📊 Example
+The ancilla is in \(|0\rangle\), and the total input is:
 
 \[
-U = \left( \prod_{j=1}^{m} \text{CNOT}_{1→a_j} \right) \cdot \text{CNOT}_{1→2} \cdot H_1
+|\Psi_{\text{in}}\rangle = |x_0\rangle_1 \otimes |x_0\rangle_2 \otimes |0\rangle_3
 \]
+
+We define the unitary operation:
 
 \[
-|Ψ⟩ = c_0 |0, x_0, 0^m⟩ + c_1 |1, \tilde{x}_0, 1^m⟩
+U = \text{CNOT}_{1 \rightarrow 3} \cdot \text{CNOT}_{1 \rightarrow 2} \cdot (H_1 \otimes I_2 \otimes I_3)
 \]
 
-- Only \( y = 0^m \) or \( 1^m \) possible → supports **majority error correction**
+After application:
 
-### 🤖 Quantum-Classical Hybrid Feedback
+\[
+|\Psi_1\rangle = c_0 |0, x_0, 0\rangle + c_1 |1, \tilde{x}_0, 1\rangle
+\]
 
-- Supports real-time updates in applications like:
-  - High-frequency trading
-  - Adaptive quantum optimization
+Where:
+- \(c_0 = \frac{\alpha + \beta}{\sqrt{2}}, \quad c_1 = \frac{\alpha - \beta}{\sqrt{2}}\)
+- \(|\tilde{x}_0\rangle = X|x_0\rangle\)
+
+### 🔁 Recursive Update Rule
+
+Each round performs:
+
+\[
+|\Psi_n\rangle = \frac{1}{\sqrt{2}} \left( |0, r_{n-1}, 0\rangle + (-1)^{q_{n-1}} |1, \tilde{r}_{n-1}, 1\rangle \right)
+\]
+
+Measurement of qubit 3 yields outcome \(y_n\), with the update:
+
+\[
+(q_n, r_n) =
+\begin{cases}
+(0, r_{n-1}) & \text{if } y_n = 0 \\
+(1, \tilde{r}_{n-1}) & \text{if } y_n = 1
+\end{cases}
+\]
+
+---
+
+## 🌀 2. Deferred Measurement Circuit Equivalence
+
+### 🧠 Equivalence Construction
+
+Using ancilla registers \(E_1, \dots, E_n\), we perform the following per round:
+
+1. Apply:  
+   \[
+   U_{123} |q_{k-1}, r_{k-1}, 0\rangle \rightarrow |q_k, r_k, q_k\rangle
+   \]
+2. Copy:  
+   \[
+   \text{CNOT}_{3 \rightarrow E_k}
+   \]
+3. Reset:  
+   \[
+   \text{CNOT}_{E_k \rightarrow 3}
+   \]
+
+### ✅ Equivalence Proof
+
+Final state after these steps is:
+
+\[
+\frac{1}{\sqrt{2}} \left( |0, r_{n-1}, 0\rangle |0\rangle_{E_n} + (-1)^{q_{n-1}} |1, \tilde{r}_{n-1}, 0\rangle |1\rangle_{E_n} \right)
+\]
+
+Post-measurement of \(E_n\) yields identical state evolution as mid-circuit measurement. Commutation ensures all future operations remain valid.
+
+<p align="center">
+  <img src="figures/deferred_circuit_example.png" alt="Deferred Measurement Circuit">
+</p>
+
+---
+
+## 📊 3. Performance and Scalability Benchmarks
+
+Simulated using **IonQ backend** with **Aria-1 noise model**.
+
+### 🔧 Circuit Complexity
+
+| Metric             | Observation                        |
+|--------------------|-------------------------------------|
+| Depth              | Linear scaling with rounds \(n\)    |
+| Gate Count         | Linear scaling due to ancilla ops   |
+| Memory Overhead    | Increases with number of ancillas   |
+| Qubit Reuse        | Efficient, avoids mid-circuit reset |
+
+<p align="center">
+  <img src="figures/performance_metrics.png" alt="Circuit Depth and Gate Count">
+</p>
+
+---
+
+## 🔁 4. Real-World Feedback System Relevance
+
+This architecture:
+
+- Mimics real-time feedback for quantum error correction
+- Supports **majority voting** for fault tolerance
+- Enables **modular quantum-classical hybrid control**
+- Is useful for quantum sensing and QML applications
+
+---
+
+## ⚠️ 5. Error Analysis and Noise Mitigation
+
+Simulated under realistic **depolarizing noise**:
+
+- \(r_y: p = 0.0005\)
+- \(r_{xx}: p = 0.0133\)
+
+<p align="center">
+  <img src="figures/fidelity_plot.png" alt="Fidelity under Noise">
+</p>
+
+### 🔨 Mitigation Techniques
+
+- Use of ancilla registers for coherent outcome tracking
+- Post-processing for validating outcome consistency
+- Explicit CNOT structures for fault isolation
+- Plans for **circuit cutting** for modular simulation
+
+---
+
+## 🧭 6. Reflections and Extensions
+
+- Extend to deeper feedback loops using:
+  \[
+  U = \left( \prod_{j=1}^{m} \text{CNOT}_{1 \rightarrow a_j} \right) \cdot \text{CNOT}_{1 \rightarrow 2} \cdot H_1
+  \]
+- Use of **redundant ancilla registers** for noise mitigation
+- Dynamic classical updates possible with measurement-conditioned parameters
 
 ---
 
 ## ✅ Conclusion
 
-We implemented a **deferred measurement protocol** using multiple ancillas, validated its **equivalence** to mid-circuit measurements, and benchmarked its **performance and scalability**.
+We demonstrate:
 
-> This work demonstrates practical feasibility for **feedback-enabled quantum systems** and sets the stage for **fault-tolerant, adaptive quantum computation**.
+- A **deferred measurement circuit** architecture
+- Fidelity equivalence to mid-circuit measurement
+- Robustness to realistic noise and hardware constraints
+
+The results provide a blueprint for scalable, feedback-enabled quantum systems in NISQ-era hardware.
 
 ---
 
-## 📁 Supporting Materials
+## 📎 Supporting Materials
 
-📌 Source code and circuit files available here:  
-**[GitHub Repository Link](https://github.com/your-repo-name)**
+All source code and circuit files are provided in the repository:  
+🔗 **[GitHub Repository](https://github.com/your-repo/deferred-measurement-qc)**
 
 ---
 
 ## 📚 References
 
-1. Gurevich & Blass, *Quantum circuits and deferred measurements*, [arXiv:2107.08324](https://arxiv.org/abs/2107.08324)
-2. Puente et al., *State preparation via ancilla resetting*, [arXiv:2305.08641](https://arxiv.org/abs/2305.08641)
-3. Iten et al., *Quantum Circuits for Isometries*, [arXiv:1501.06911](https://arxiv.org/abs/1501.06911)
-4. Nagai et al., *Quantum channel decomposition*, [arXiv:2401.09734](https://arxiv.org/abs/2401.09734)
+1. Y. Gurevich and A. Blass, *Quantum circuits with classical channels and the principle of deferred measurements*, [arXiv:2107.08324](https://arxiv.org/abs/2107.08324)  
+2. D. A. Puente et al., *Quantum state preparation via engineered ancilla resetting*, [arXiv:2305.08641](https://arxiv.org/abs/2305.08641)  
+3. R. Iten et al., *Quantum Circuits for Isometries*, [arXiv:1501.06911](https://arxiv.org/abs/1501.06911)  
+4. R. Nagai et al., *Quantum channel decomposition with pre- and post-selection*, [arXiv:2401.09734](https://arxiv.org/abs/2401.09734)
+
+---
 
 
 
