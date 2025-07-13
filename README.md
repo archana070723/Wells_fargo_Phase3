@@ -176,10 +176,10 @@ The results provide a blueprint for scalable, feedback-enabled quantum systems i
 
 ## 📚 References
 
-1. Y. Gurevich and A. Blass, *Quantum circuits with classical channels and the principle of deferred measurements*, [arXiv:2107.08324](https://arxiv.org/abs/2107.08324.)  
+1. Y. Gurevich and A. Blass, *Quantum circuits with classical channels and the principle of deferred measurements*,   
 2. D. A. Puente et al., *Quantum state preparation via engineered ancilla resetting*, [arXiv:2305.08641](https://arxiv.org/abs/2305.08641)  
 3. R. Iten et al., *Quantum Circuits for Isometries*, [arXiv:1501.06911](https://arxiv.org/abs/1501.06911)  
-4. R. Nagai et al., *Quantum channel decomposition with pre- and post-selection*, [arXiv:2401.09734](https://arxiv.org/abs/2401.09734)
+4. R. Nagai et al., *Quantum channel decomposition with pre- and post-selection*, 
 
 ---
 
