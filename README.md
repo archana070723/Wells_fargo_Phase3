@@ -3,6 +3,7 @@
 # 🌐 Global Industry Challenge — Wells Fargo Challenge – Phase 3
 
 **Team Name**: Feynman Prodigies  
+## QBraid Launch 
 [<img src="https://qbraid-static.s3.amazonaws.com/logos/Launch_on_qBraid_white.png" width="150">](https://account.qbraid.com?gitHubUrl=<https://github.com/archana070723/Wells_fargo_Phase3.git>)
 ---
 
