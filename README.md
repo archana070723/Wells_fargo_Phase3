@@ -25,11 +25,7 @@ $$\[
 |\Psi_{\text{in}}\rangle = |x_0\rangle_1 \otimes |x_0\rangle_2 \otimes |0\rangle_3
 \]$$
 
-We define the unitary operation:
 
-\[
-U = \mathrm{CNOT}_{1 \rightarrow 3} \cdot \mathrm{CNOT}_{1 \rightarrow 2} \cdot (H_1 \otimes I_2 \otimes I_3)
-\]
 
 
 After application:
