@@ -179,6 +179,40 @@ Option 1: Use Jupyter/Colab Notebooks
 Open and run either of the following notebooks:
 
 `approach.ipynb` — for understanding the methodology
+- 📊 What This File Contains
+This notebook demonstrates the equivalence between mid-circuit measurement and deferred measurement using PennyLane. It constructs two quantum circuits:
+
+`node` — Implements mid-circuit measurement with postselection and reset.
+
+`node_defer` — Implements the deferred measurement version using entanglement with ancilla qubits followed by a final projector.
+
+-  Key Features and Functionalities
+State Initialization:
+Prepares qubits using qml.StatePrep with non-uniform amplitudes.
+
+Circuit Execution:
+
+Repeats a Hadamard + CNOT unitary sequence for n=3 rounds.
+
+In node, mid-circuit measurements are used with reset=True and postselect.
+
+In node_defer, measurements are deferred by entangling with ancilla qubits and applying a final qml.Projector.
+
+Validation:
+
+Compares output probability distributions across all 2ⁿ postselection branches.
+
+Uses `qml.specs()` to report gate counts, depth, and wire usage for benchmarking.
+
+Ensures functional equivalence with:
+```
+np.allclose(node(state, select[i]), node_defer(state, select[i]))
+```
+- 📈 Plots Generated
+Fidelity Comparison Plot
+A bar plot comparing fidelities between the mid-circuit and deferred measurement final states across all possible measurement outcomes (2ⁿ branches).
+
+Each bar represents fidelity for a specific bitstring outcome Yn (e.g., '000', '001', ..., '111').
 
 `main.ipynb` — for executing simulations and generating plots
 
