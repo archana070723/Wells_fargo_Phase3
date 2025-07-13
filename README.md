@@ -197,10 +197,7 @@ Execute any module directly for benchmarking or analysis:
 
 ## 🧭 6. Reflections and Extensions
 
-- Extend to deeper feedback loops using:
-  \[
-  U = \left( \prod_{j=1}^{m} \text{CNOT}_{1 \rightarrow a_j} \right) \cdot \text{CNOT}_{1 \rightarrow 2} \cdot H_1
-  \]
+- Extend to deeper feedback loops 
 - Use of **redundant ancilla registers** for noise mitigation
 - Dynamic classical updates possible with measurement-conditioned parameters
 
