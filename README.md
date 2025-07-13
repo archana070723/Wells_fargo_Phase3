@@ -149,6 +149,51 @@ Simulated under realistic **depolarizing noise**:
 - Plans for **circuit cutting** for modular simulation
 
 ---
+---
+## 🚀 How to Run the Project
+```bash
+├── docs/
+│   └── docs.md                # Project documentation
+├── AriaNoiseModel.py         # the Aria-1 noise model
+├── BaseCircuit.py            #  baseline
+├── DeferredCircuit.py        # Implements deferred measurement version
+├── Depth.py                  # Measures circuit depth
+├── Efficiency.py             # Tracks qubit reuse efficiency
+├── Fidelity.py               # Fidelity calculation utilities
+├── GateCount.py              # Gate count benchmarking
+├── MemoryLoad.py             # Memory tracking utilities
+├── Simulation.py             # Runs simulations with given circuits and noise
+├── approach.ipynb            # Colab-style notebook explaining the methodology
+├── main.ipynb                # Main experimental notebook
+├── README.md                 # Overview and instructions
+└── requirements.txt          # Required Python packages
+```
+
+Install all required dependencies using:
+```
+pip install -r requirements.txt
+
+```
+Alternatively, install essential packages manually:
+```
+pip install pennylane qiskit qiskit-ionq qiskit-aer matplotlib numpy
+
+```
+- ▶️ Running the Project
+Option 1: Use Jupyter/Colab Notebooks
+Open and run either of the following notebooks:
+
+`approach.ipynb` — for understanding the methodology
+
+`main.ipynb` — for executing simulations and generating plots
+
+You can use Google Colab or a local Jupyter environment.
+
+- Option 2: Run via Python Scripts
+Execute any module directly for benchmarking or analysis:
+
+✅ Ensure your terminal or IDE working directory is set to the root of the repository.
+---
 
 ## 🧭 6. Reflections and Extensions
 
