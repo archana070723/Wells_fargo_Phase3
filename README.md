@@ -142,7 +142,6 @@ Simulated under realistic **depolarizing noise**:
 - Use of ancilla registers for coherent outcome tracking
 - Post-processing for validating outcome consistency
 - Explicit CNOT structures for fault isolation
-- Plans for **circuit cutting** for modular simulation
 
 ---
 ---
