@@ -27,9 +27,10 @@ $$\[
 
 We define the unitary operation:
 
-$$\[
-U = \text{CNOT}_{1 \rightarrow 3} \cdot \text{CNOT}_{1 \rightarrow 2} \cdot (H_1 \otimes I_2 \otimes I_3)
-\]$$
+\[
+U = \mathrm{CNOT}_{1 \rightarrow 3} \cdot \mathrm{CNOT}_{1 \rightarrow 2} \cdot (H_1 \otimes I_2 \otimes I_3)
+\]
+
 
 After application:
 
@@ -84,9 +85,19 @@ Using ancilla registers \(E_1, \dots, E_n\), we perform the following per round:
 
 Final state after these steps is:
 
+
 $$\[
-\frac{1}{\sqrt{2}} \left( |0, r_{n-1}, 0\rangle |0\rangle_{E_n} + (-1)^{q_{n-1}} |1, \tilde{r}_{n-1}, 0\rangle |1\rangle_{E_n} \right)
+\frac{1}{\sqrt2}\Bigl(
+\ket{0,r_{n-1},0}\ket0_{E_n}
++(-1)^{q_{n-1}}\ket{1,\widetilde r_{n-1},0}\ket1_{E_n}
+\Bigr).
 \]$$
+
+
+
+
+
+
 
 Post-measurement of \(E_n\) yields identical state evolution as mid-circuit measurement. Commutation ensures all future operations remain valid.
 
